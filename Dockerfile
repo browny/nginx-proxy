@@ -15,7 +15,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf \
 
 # Install Forego
 RUN curl -O https://bin.equinox.io/c/ekMN3bCZFUn/forego-stable-linux-amd64.tgz && \
-	unzip forego-stable-darwin-amd64.zip -d /usr/local/bin && \
+	tar zxvf forego-stable-linux-amd64.tgz -C /usr/local/bin && \
  	chmod u+x /usr/local/bin/forego
 
 ENV DOCKER_GEN_VERSION 0.4.2
