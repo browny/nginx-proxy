@@ -114,6 +114,20 @@ server {
 }
 
 server {
+    server_name local-stackdriver-agent.stackdriver.com;
+    listen 80;
+    location /nginx_status {
+      stub_status on;
+      access_log   off;
+      allow 172.17.0.0/16;
+      deny all;
+    }
+    location / {
+      root /dev/null;
+    }
+}
+
+server {
 	server_name {{ $host }};
 	listen 443 ssl http2 {{ $default_server }};
 	access_log /var/log/nginx/access.log vhost;
